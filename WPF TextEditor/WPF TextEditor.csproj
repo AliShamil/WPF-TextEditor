@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <RootNamespace>WPF_TextEditor</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="icons8-align-center-50.png" />
+    <None Remove="icons8-align-justify-50.png" />
+    <None Remove="icons8-align-left-50.png" />
+    <None Remove="icons8-align-right-50.png" />
+    <None Remove="icons8-decrease-font-30.png" />
+    <None Remove="icons8-increase-font-30.png" />
+    <None Remove="icons8-redo-24.png" />
+    <None Remove="icons8-undo-24.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="icons8-align-center-50.png" />
+    <Resource Include="icons8-align-justify-50.png" />
+    <Resource Include="icons8-align-left-50.png" />
+    <Resource Include="icons8-align-right-50.png" />
+    <Resource Include="icons8-decrease-font-30.png" />
+    <Resource Include="icons8-increase-font-30.png" />
+    <Resource Include="icons8-redo-24.png" />
+    <Resource Include="icons8-undo-24.png" />
+  </ItemGroup>
+
+</Project>
