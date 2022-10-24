@@ -16,22 +16,25 @@
     <None Remove="icons8-decrease-font-30.png" />
     <None Remove="icons8-increase-font-30.png" />
     <None Remove="icons8-redo-24.png" />
+    <None Remove="icons8-txt-64.png" />
     <None Remove="icons8-undo-24.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.4.0" />
     <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="icons8-align-center-50.png" />
-    <Resource Include="icons8-align-justify-50.png" />
-    <Resource Include="icons8-align-left-50.png" />
-    <Resource Include="icons8-align-right-50.png" />
-    <Resource Include="icons8-decrease-font-30.png" />
-    <Resource Include="icons8-increase-font-30.png" />
-    <Resource Include="icons8-redo-24.png" />
-    <Resource Include="icons8-undo-24.png" />
+    <Resource Include="Icons\icons8-align-center-50.png" />
+    <Resource Include="Icons\icons8-align-justify-50.png" />
+    <Resource Include="Icons\icons8-align-left-50.png" />
+    <Resource Include="Icons\icons8-align-right-50.png" />
+    <Resource Include="Icons\icons8-decrease-font-30.png" />
+    <Resource Include="Icons\icons8-increase-font-30.png" />
+    <Resource Include="Icons\icons8-redo-24.png" />
+    <Resource Include="Icons\icons8-txt-64.png" />
+    <Resource Include="Icons\icons8-undo-24.png" />
   </ItemGroup>
 
 </Project>

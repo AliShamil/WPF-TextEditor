@@ -33,6 +33,8 @@ namespace WPF_TextEditor
             cBoxFontSize.SelectionChanged += (s, e) =>
             rtb.Selection.ApplyPropertyValue(TextElement.FontSizeProperty, e.AddedItems[0]);
 
+            colorPicker.SelectedColorChanged  += (s, e) =>
+            rtb.Selection.ApplyPropertyValue(ForegroundProperty, new System.Windows.Media.SolidColorBrush(colorPicker.SelectedColor.Value));
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -44,17 +46,6 @@ namespace WPF_TextEditor
         private void MenuItemNew_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("This method will be fixed soon!");
-            //var fileDialog = new OpenFileDialog()
-            //{
-            //    Filter = "Text|*.txt"
-            //};
-
-            //if (fileDialog.ShowDialog() is true)
-            //{
-            //    using StreamReader streamReader = new(fileDialog.FileName);
-            //    TextRange textRange = new TextRange(rtb.Document.ContentStart,rtb.Document.ContentEnd);
-            //    textRange.Text = streamReader.ReadToEnd();
-            //}
         }
 
         private void MenuItemSave_Click(object sender, RoutedEventArgs e)
@@ -87,5 +78,9 @@ namespace WPF_TextEditor
                 textRange.Text = streamReader.ReadToEnd();
             }
         }
+
+   
+
+
     }
 }

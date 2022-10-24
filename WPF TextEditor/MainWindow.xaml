@@ -3,12 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPF_TextEditor"
+        
+        xmlns:local="clr-namespace:WPF_TextEditor" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="Text Writer" Height="386" Width="794" Loaded="Window_Loaded" Background="#5b5f97" Icon="Icons/icons8-txt-64.png" MinHeight="250" MinWidth='225'>
     <Grid>
 
         <Grid.Resources>
+
             <Style TargetType="{x:Type Button}" x:Key="formatTextStyle">
                 <Setter Property="FontFamily" Value="Palatino Linotype"></Setter>
                 <Setter Property="Width" Value="30"></Setter>
@@ -20,125 +22,117 @@
                 <Setter Property="Width" Value="30"></Setter>
                 <Setter Property="CommandTarget" Value="{Binding ElementName=rtb}"></Setter>
             </Style>
+
         </Grid.Resources>
 
         <DockPanel>
-            <Menu DockPanel.Dock="Top">
-                <MenuItem Header="_File">
-                    <MenuItem Header="_New" Click="MenuItemNew_Click"/>
-                    <MenuItem Header="_Open" Click="MenuItemOpen_Click" />
-                    <MenuItem Header="_Save" Click="MenuItemSave_Click" />
+
+            <Menu DockPanel.Dock="Top" Background="Transparent" Foreground="#f6f8ff">
+
+                <MenuItem Header="_File"  >
+                    <MenuItem Header="_New" Foreground="Black" Click="MenuItemNew_Click" />
+                    <MenuItem Header="_Open" Foreground="Black" Click="MenuItemOpen_Click" />
+                    <MenuItem Header="_Save"  Foreground="Black" Click="MenuItemSave_Click" />
                     <Separator />
-                    <MenuItem Header="_Exit" />
+                    <MenuItem Header="_Exit" Foreground="Black"/>
                 </MenuItem>
+
             </Menu>
 
-            <ToolBar Name="mainToolBar" Height="35" DockPanel.Dock="Top">
+            <ToolBar Name="mainToolBar" Height="35" DockPanel.Dock="Top" Background="#58a4b0">
+
                 <Button Style="{StaticResource formatImageStyle}" Command="ApplicationCommands.Undo" ToolTip="Undo" Margin="0 3 3 3">
-                    <Image Source="/icons8-undo-24.png"></Image>
+                    <Image Source="Icons/icons8-undo-24.png"></Image>
                 </Button>
+
                 <Button Style="{StaticResource formatImageStyle}" Command="ApplicationCommands.Redo" ToolTip="Redo" Margin="3">
-                    <Image Source="/icons8-redo-24.png"></Image>
+                    <Image Source="Icons/icons8-redo-24.png"></Image>
                 </Button>
+
                 <ComboBox
-                    
+
                     ItemsSource="{Binding Source={x:Static Fonts.SystemFontFamilies}}"
-                       Background="Transparent"
-                       Width="100"
-                        Name="cBoxFontStyle"
-                        FontSize="15"
-                        Margin="10,3,3,3"
-                        VerticalContentAlignment="Center"
-                        HorizontalContentAlignment="Center" 
-                    
-                       >
-                    
-                </ComboBox>
-             
-                <Button Style="{StaticResource formatTextStyle}" Command="EditingCommands.ToggleBold" ToolTip="Bold">
-                    <TextBlock FontWeight="Bold">B</TextBlock>
-                </Button>
-                <Button Style="{StaticResource formatTextStyle}" Command="EditingCommands.ToggleItalic" ToolTip="Italic">
-                    <TextBlock FontStyle="Italic" FontWeight="Bold">I</TextBlock>
-                </Button>
-                <Button Style="{StaticResource formatTextStyle}" Command="EditingCommands.ToggleUnderline" ToolTip="Underline">
-                    <TextBlock TextDecorations="Underline" FontWeight="Bold">U</TextBlock>
-                </Button>
+                    Background="Transparent"
+                    Width="100"
+                    Name="cBoxFontStyle"
+                    FontSize="12"
+                    Margin="10,3,3,3"
+                    VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    ToolTip="Font Style"/>
+
+                <ComboBox
+                    Background="Transparent"
+                    Width="100"
+                    Name="cBoxFontSize"
+                    FontSize="12"
+                    Margin="10,3,3,3"
+                    VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    ToolTip="Font Size"/>
+
+
                 <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.IncreaseFontSize" ToolTip="Grow Font">
-                    <Image Source="/icons8-increase-font-30.png" Width="20"/>
-
-
+                    <Image Source="Icons/icons8-increase-font-30.png" Width="14"/>
                 </Button>
 
                 <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.DecreaseFontSize" ToolTip="Shrink Font">
-                    <Image Source="/icons8-decrease-font-30.png" Width="20"/>
-
+                    <Image Source="Icons/icons8-decrease-font-30.png" Width="14"/>
                 </Button>
-                <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.AlignLeft" ToolTip="Align Left">
 
-                    <Image Source="/icons8-align-left-50.png" Width="25"></Image>
+                <Button Style="{StaticResource formatTextStyle}" Command="EditingCommands.ToggleBold" ToolTip="Bold" Margin="10 0 0 0">
+                    <TextBlock FontWeight="Bold">B</TextBlock>
                 </Button>
+
+                <Button Style="{StaticResource formatTextStyle}" Command="EditingCommands.ToggleItalic" ToolTip="Italic">
+                    <TextBlock FontStyle="Italic" FontWeight="Bold">I</TextBlock>
+                </Button>
+
+                <Button Style="{StaticResource formatTextStyle}" Command="EditingCommands.ToggleUnderline" ToolTip="Underline">
+                    <TextBlock TextDecorations="Underline" FontWeight="Bold">U</TextBlock>
+                </Button>
+
+                <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.AlignLeft" ToolTip="Align Left" Margin="30,0,0,0">
+                    <Image Source="Icons/icons8-align-left-50.png" Width="25"  HorizontalAlignment="Center" ></Image>
+                </Button>
+
                 <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.AlignCenter" ToolTip="Align Center">
-
-                    <Image Source="/icons8-align-center-50.png" Width="25"></Image>
+                    <Image Source="Icons/icons8-align-center-50.png" Width="25"   HorizontalAlignment="Center" ></Image>
                 </Button>
-                <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.AlignRight" ToolTip="Align Right">
 
-                    <Image Source="/icons8-align-right-50.png" Width="25"></Image>
+                <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.AlignRight" ToolTip="Align Right" Margin="5,0,0,0">
+                    <Image Source="Icons/icons8-align-right-50.png" Width="25"  HorizontalAlignment="Center" ></Image>
                 </Button>
+
                 <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.AlignJustify" ToolTip="Align Justify">
-
-                    <Image Source="/icons8-align-justify-50.png" Width="25"></Image>
+                    <Image Source="Icons/icons8-align-justify-50.png" Width="25" Margin="5,0,0,0"  HorizontalAlignment="Center" ></Image>
                 </Button>
-                <ComboBox
-                    
-                    
-                       Background="Transparent"
-                       Width="100"
-                        Name="cBoxFontSize"
-                        FontSize="15"
-                        Margin="10,3,3,3"
-                        VerticalContentAlignment="Center"
-                        HorizontalContentAlignment="Center" 
-                    
-                       >
 
-                </ComboBox>
-                
-                
+
+                <xctk:ColorPicker x:Name="colorPicker" DisplayColorAndName="True" Width="100" Margin="40 3 3 3" Background="Transparent" ToolTip="Color"/>
+
             </ToolBar>
+
             <RichTextBox 
-            
-            Name="rtb" 
-            Grid.Row="1"  
-            FontSize="9"
-            Margin="5"
-            Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5" >
+                Background="#f6f8ff"
+                Name="rtb" 
+                Grid.Row="1"  
+                FontSize="15"
+                Margin="5"
+                Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5">
+
                 <RichTextBox.Resources>
+
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="9"/>
                     </Style>
+
                 </RichTextBox.Resources>
+
             </RichTextBox>
 
         </DockPanel>
 
-        <!--<TabControl>
-            <TabItem>
-                <Button>A</Button>
-            </TabItem>
-
-            <TabItem>
-                <Button>B</Button>
-            </TabItem>
-        </TabControl>-->
-        <!--<DockPanel x:Name="PanelMain">
-            
-            <ToolBar DockPanel.Dock="Top"
-                     Height="40">
-                <Button></Button>
-            </ToolBar>
-            <RichTextBox></RichTextBox>
-        </DockPanel>-->
     </Grid>
+
 </Window>
